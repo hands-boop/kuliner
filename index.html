@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MIDORI — Artisan Matcha, Boba & Coffee Atelier</title>
+  <meta name="description" content="Authentic ceremonial Uji matcha, slow-cooked golden boba, and specialty coffee. Handcrafted beverages made with real ingredients for your daily sanctuary.">
+  <meta name="keywords" content="matcha latte, boba tea, cafe, brown sugar boba, coffee, uji matcha, kuliner, artisan tea">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍵</text></svg>">
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar" id="announcementBar">
+    <div class="container announcement-inner">
+      <div class="announcement-text">
+        <span>✨ <strong>Promo Spesial:</strong> Diskon 20% pembelian pertama dengan kode: <code class="promo-code">MIDORI20</code></span>
+      </div>
+      <div class="announcement-tools">
+        <div class="currency-toggle" id="currencyToggle">
+          <span class="curr-label">Mata Uang:</span>
+          <button type="button" class="curr-btn active" data-curr="IDR" id="currIdrBtn">IDR (Rp)</button>
+          <span class="curr-divider">/</span>
+          <button type="button" class="curr-btn" data-curr="USD" id="currUsdBtn">USD ($)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header & Navigation -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <!-- Brand Logo -->
+      <a href="#hero" class="brand-logo" id="brandLogo">
+        <span class="logo-leaf">🌿</span>
+        <div class="logo-text-group">
+          <span class="logo-title">MIDORI</span>
+          <span class="logo-subtitle">ARTISAN MATCHA & TEA</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="main-nav" id="mainNav">
+        <ul class="nav-list">
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="#menu" class="nav-link">Menu</a></li>
+          <li><a href="#story" class="nav-link">Our Story</a></li>
+          <li><a href="#experience" class="nav-link">Sanctuary</a></li>
+          <li><a href="#locations" class="nav-link">Locations</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Action Buttons -->
+      <div class="header-actions">
+        <button type="button" class="btn btn-order" id="openCartBtn">
+          <span>Order Now</span>
+          <span class="bag-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+          </span>
+          <span class="cart-count-badge" id="cartCountBadge">0</span>
+        </button>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Buka Menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Navigation -->
+  <div class="mobile-nav-backdrop" id="mobileBackdrop"></div>
+  <aside class="mobile-nav-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-header">
+      <div class="brand-logo">
+        <span class="logo-leaf">🌿</span>
+        <div class="logo-text-group">
+          <span class="logo-title">MIDORI</span>
+          <span class="logo-subtitle">ARTISAN TEA</span>
+        </div>
+      </div>
+      <button type="button" class="drawer-close-btn" id="closeDrawerBtn" aria-label="Tutup Menu">&times;</button>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="#hero" class="mobile-nav-link">Home</a></li>
+      <li><a href="#menu" class="mobile-nav-link">Menu Favorit</a></li>
+      <li><a href="#story" class="mobile-nav-link">Filosofi Kami</a></li>
+      <li><a href="#experience" class="mobile-nav-link">Suasana Cafe</a></li>
+      <li><a href="#locations" class="mobile-nav-link">Lokasi Gerai</a></li>
+      <li><a href="#contact" class="mobile-nav-link">Hubungi Kami</a></li>
+    </ul>
+    <div class="mobile-drawer-footer">
+      <button type="button" class="btn btn-order btn-block" id="mobileCartOpenBtn">
+        <span>Buka Keranjang Pesanan</span>
+        <span class="cart-count-badge" id="mobileCartBadge">0</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Hero Section -->
+  <main>
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        
+        <!-- Left Hero Content -->
+        <div class="hero-content">
+          <div class="hero-eyebrow">
+            <span class="sparkle">✦</span>
+            <span>Artisan Japanese Tea & Boba Atelier</span>
+          </div>
+
+          <h1 class="hero-title">
+            <span>MATCHA.</span>
+            <span>BOOBA.</span>
+            <span class="title-highlight">GOOD VIBES.<svg class="title-leaf-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/></svg></span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Premium drinks. Real ingredients. Made for your moment. Nikmati paduan daun matcha Uji organik grade seremonial, boba mutiara lembut dimasak segar tiap jam, dan racikan susu oat pilihan.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#menu" class="btn btn-primary" id="heroOrderBtn">
+              <span>Order Now</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            </a>
+            <a href="#menu" class="btn btn-secondary" id="heroMenuBtn">
+              <span>View Menu</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm1 14.5l-4-4 1.4-1.4L12 12.7l5.6-5.6 1.4 1.4-6 6z"/></svg>
+            </a>
+          </div>
+
+          <!-- Feature Trust Badges -->
+          <div class="hero-badges-row">
+            <div class="badge-item">
+              <div class="badge-icon">🌿</div>
+              <div class="badge-info">
+                <strong>100% Real Uji</strong>
+                <span>Ceremonial Matcha</span>
+              </div>
+            </div>
+            <div class="badge-item">
+              <div class="badge-icon">🧋</div>
+              <div class="badge-info">
+                <strong>Freshly Made</strong>
+                <span>Warm Slow Boba</span>
+              </div>
+            </div>
+            <div class="badge-item">
+              <div class="badge-icon">🤍</div>
+              <div class="badge-info">
+                <strong>Crafted with Love</strong>
+                <span>Oat & Dairy Options</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Hero Visual -->
+        <div class="hero-visual">
+          <div class="hero-image-wrapper">
+            <!-- Floating Organic Seal Badge -->
+            <div class="floating-seal">
+              <div class="seal-circle">
+                <svg viewBox="0 0 100 100" class="rotating-text-svg">
+                  <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none"/>
+                  <text>
+                    <textPath xlink:href="#circlePath" startOffset="0%">
+                      • 100% REAL MATCHA • ARTISAN BREWED
+                    </textPath>
+                  </text>
+                </svg>
+                <span class="seal-icon">🍵</span>
+              </div>
+            </div>
+
+            <!-- Main Hero Image -->
+            <img src="assets/images/hero-drinks.jpg" alt="Artisan Matcha Latte & Brown Sugar Boba by MIDORI" class="hero-main-img" id="heroMainImg">
+            
+            <!-- Soft glowing backdrop elements -->
+            <div class="glow-sphere sphere-green"></div>
+            <div class="glow-sphere sphere-amber"></div>
+
+            <!-- Floating Social Proof Card -->
+            <div class="floating-review-card">
+              <div class="review-avatars">
+                <span>🌟</span>
+                <span>⭐</span>
+                <span>⭐</span>
+                <span>⭐</span>
+                <span>⭐</span>
+              </div>
+              <div class="review-text">
+                <strong>4.9 / 5.0 Rating</strong>
+                <p>2,850+ Ulasan Puas se-Indonesia</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Best Sellers Section -->
+    <section class="menu-section" id="menu">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="section-header-row">
+          <div class="section-title-wrap">
+            <div class="category-tag">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/></svg>
+              <span>BEST SELLERS</span>
+            </div>
+            <h2 class="section-heading">Your Favorites Right Here</h2>
+            <p class="section-subtext">Menu pilihan racikan barista kami yang paling dicintai pecinta teh dan boba.</p>
+          </div>
+          
+          <div class="section-header-actions">
+            <button type="button" class="btn btn-pill-outline" id="viewAllMenuBtn">
+              <span>View All Menu</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter Category Tabs -->
+        <div class="filter-tabs-wrapper">
+          <div class="filter-tabs" id="filterTabs">
+            <button type="button" class="filter-tab active" data-category="all">Semua Menu</button>
+            <button type="button" class="filter-tab" data-category="matcha">Ceremonial Matcha</button>
+            <button type="button" class="filter-tab" data-category="boba">Brown Sugar Series</button>
+            <button type="button" class="filter-tab" data-category="fruit">Fruit & Refreshers</button>
+            <button type="button" class="filter-tab" data-category="coffee">Specialty Coffee</button>
+          </div>
+        </div>
+
+        <!-- Product Cards Grid -->
+        <div class="products-grid" id="productsGrid">
+          <!-- Products will be dynamically populated and enhanced via JavaScript -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Sanctuary Experience Banner ("Your Daily Escape") -->
+    <section class="sanctuary-section" id="experience">
+      <div class="container">
+        <div class="sanctuary-banner-card">
+          
+          <!-- Banner Left: Photo with cozy vibe -->
+          <div class="sanctuary-photo-wrap">
+            <img src="assets/images/cafe-interior.jpg" alt="Suasana Midori Cafe Sanctuary" class="sanctuary-img">
+            <div class="sanctuary-photo-overlay">
+              <span class="live-tag"><span class="pulse-dot"></span> Suasana Hening & Hangat</span>
+            </div>
+          </div>
+
+          <!-- Banner Right: Deep Forest Green Story Callout -->
+          <div class="sanctuary-info-wrap">
+            <div class="sanctuary-eyebrow">RELAX. SIP. ENJOY.</div>
+            <h2 class="sanctuary-title">Your Daily Escape</h2>
+            <p class="sanctuary-desc">
+              Cozy vibes, great drinks, better moments. Ruang hening kami dirancang khusus agar Anda dapat melepas penat, menikmati aroma seduhan matcha segar, dan merasakan kenyamanan setiap tegukan.
+            </p>
+
+            <div class="sanctuary-features-list">
+              <div class="sanctuary-item">
+                <span class="item-check">✓</span>
+                <span>Free High-Speed Wi-Fi & Meja Kerja Nyaman</span>
+              </div>
+              <div class="sanctuary-item">
+                <span class="item-check">✓</span>
+                <span>Barista terlatih standar Uji Tea Masters Jepang</span>
+              </div>
+              <div class="sanctuary-item">
+                <span class="item-check">✓</span>
+                <span>Pilihan Susu Nabati (Oatmilk & Almond) Tanpa Biaya Tambahan</span>
+              </div>
+            </div>
+
+            <!-- Custom Boba Line-Art & Action -->
+            <div class="sanctuary-footer-row">
+              <button type="button" class="btn btn-light-green" id="findStoreBtn">
+                <span>Temukan Gerai Terdekat</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </button>
+
+              <div class="boba-illustration-box">
+                <svg viewBox="0 0 120 120" class="boba-art-svg">
+                  <!-- Boba cup outline -->
+                  <path d="M35 30 L42 95 Q45 105 60 105 Q75 105 78 95 L85 30 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                  <!-- Cup lid -->
+                  <path d="M30 30 Q60 20 90 30" fill="none" stroke="currentColor" stroke-width="3"/>
+                  <!-- Straw -->
+                  <line x1="68" y1="10" x2="52" y2="90" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                  <!-- Pearls inside -->
+                  <circle cx="52" cy="94" r="5" fill="currentColor"/>
+                  <circle cx="68" cy="92" r="5" fill="currentColor"/>
+                  <circle cx="60" cy="83" r="5" fill="currentColor"/>
+                  <circle cx="48" cy="80" r="4" fill="currentColor"/>
+                  <circle cx="72" cy="78" r="4" fill="currentColor"/>
+                  <!-- Heart & smile inside cup -->
+                  <path d="M60 52 C57 47 50 49 50 55 C50 61 60 67 60 67 C60 67 70 61 70 55 C70 49 63 47 60 52 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us / Philosophy Section -->
+    <section class="philosophy-section" id="story">
+      <div class="container">
+        <div class="philosophy-header text-center">
+          <div class="category-tag center-tag">
+            <span>KEUNGGULAN KAMI</span>
+          </div>
+          <h2 class="section-heading">Mengapa Memilih MIDORI?</h2>
+          <p class="section-subtext">Kami mendedikasikan ketelitian artisanal dalam setiap bahan dan cangkir yang disajikan.</p>
+        </div>
+
+        <div class="philosophy-grid">
+          <div class="philosophy-card">
+            <div class="phil-icon">🍵</div>
+            <h3>Matcha Asli dari Uji, Kyoto</h3>
+            <p>Dipetik langsung dari perkebunan teduh di Kyoto, digiling batu secara tradisional untuk menghasilkan warna hijau emerald pekat dan antioksidan murni.</p>
+          </div>
+          <div class="philosophy-card">
+            <div class="phil-icon">🍯</div>
+            <h3>Gula Aren Organik & Mutiara Segar</h3>
+            <p>Boba mutiara kami dimasak lambat dengan gula aren murni setiap 3 jam untuk menjamin tekstur kenyal (al dente) yang sempurna tanpa pengawet buatan.</p>
+          </div>
+          <div class="philosophy-card">
+            <div class="phil-icon">🌱</div>
+            <h3>100% Ramah Lingkungan</h3>
+            <p>Dari sedotan kertas tahan lama, tutup cangkir bio-degradable, hingga ampas teh yang kami komposkan untuk pertanian lokal.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Value Highlights Strip (Locations, Eco, Rewards, Social) -->
+    <section class="value-strip-section" id="locations">
+      <div class="container">
+        <div class="value-strip-grid">
+          
+          <div class="value-item" id="locationsValItem">
+            <div class="val-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </div>
+            <div class="val-text">
+              <h4>12+ LOCATIONS</h4>
+              <p>Gerai Nyaman Dekat Anda</p>
+            </div>
+          </div>
+
+          <div class="value-item">
+            <div class="val-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1 15l-4-4 1.4-1.4L11 14.2l6.6-6.6 1.4 1.4-8 8z"/></svg>
+            </div>
+            <div class="val-text">
+              <h4>ECO FRIENDLY</h4>
+              <p>Kemasan Sustainable & Alami</p>
+            </div>
+          </div>
+
+          <div class="value-item" id="rewardsValItem">
+            <div class="val-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
+            </div>
+            <div class="val-text">
+              <h4>REWARDS CLUB</h4>
+              <p>Kumpulkan Poin di Setiap Tegukan</p>
+            </div>
+          </div>
+
+          <div class="value-item">
+            <div class="val-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </div>
+            <div class="val-text">
+              <h4>FOLLOW US</h4>
+              <p>@midori.artisan</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter & Newsletter Offer -->
+    <section class="newsletter-section" id="contact">
+      <div class="container newsletter-box">
+        <div class="newsletter-content">
+          <span class="sparkle-label">🌱 JOIN THE MIDORI TEA CLUB</span>
+          <h3>Dapatkan Voucher Diskon 25% + Resep Rahasia Barista</h3>
+          <p>Daftarkan email Anda untuk info menu musiman terbatas, promo eksklusif akhir pekan, dan tips menyeduh matcha di rumah.</p>
+          <form class="newsletter-form" id="newsletterForm">
+            <input type="email" placeholder="Masukkan alamat email Anda..." required class="newsletter-input" id="newsletterInput">
+            <button type="submit" class="btn btn-primary" id="subscribeBtn">Langganan</button>
+          </form>
+          <p class="privacy-note">Tenang, kami tidak akan pernah mengirimkan spam. Anda dapat berhenti berlangganan kapan saja.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content-grid">
+      <div class="footer-brand-col">
+        <div class="brand-logo footer-logo">
+          <span class="logo-leaf">🌿</span>
+          <div class="logo-text-group">
+            <span class="logo-title">MIDORI</span>
+            <span class="logo-subtitle">ARTISAN MATCHA & TEA</span>
+          </div>
+        </div>
+        <p class="footer-desc">
+          Membawa harmoni tradisi upacara teh Jepang ke dalam gaya hidup modern perkotaan. Minuman berkualitas tinggi untuk setiap hari yang berharga.
+        </p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram">📸</a>
+          <a href="#" aria-label="TikTok">🎵</a>
+          <a href="#" aria-label="WhatsApp">💬</a>
+          <a href="#" aria-label="Twitter">🐦</a>
+        </div>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Menu Favorit</h4>
+        <ul>
+          <li><a href="#menu" class="filter-link" data-cat="matcha">Ceremonial Matcha Latte</a></li>
+          <li><a href="#menu" class="filter-link" data-cat="boba">Brown Sugar Tiger Boba</a></li>
+          <li><a href="#menu" class="filter-link" data-cat="fruit">Strawberry Matcha Foam</a></li>
+          <li><a href="#menu" class="filter-link" data-cat="coffee">Iced Espresso Sea Salt</a></li>
+          <li><a href="#menu" class="filter-link" data-cat="fruit">Mango Passion Jasmine Tea</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Lokasi Populer</h4>
+        <ul>
+          <li><span>Senopati, Jakarta Selatan</span></li>
+          <li><span>Dago Atas, Bandung</span></li>
+          <li><span>Canggu Echo Beach, Bali</span></li>
+          <li><span>Graha Famili, Surabaya</span></li>
+          <li><a href="#" id="viewAllLocationsFooter">Lihat Semua 12 Outlet →</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Jam Operasional</h4>
+        <p class="hours-text"><strong>Senin – Jumat:</strong><br>08:00 – 22:00 WIB</p>
+        <p class="hours-text"><strong>Sabtu – Minggu:</strong><br>07:30 – 23:00 WIB</p>
+        <div class="halal-certified">
+          <span>✓ Sertifikasi Halal & BPOM</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 MIDORI Tea & Boba Atelier. Hak Cipta Dilindungi Undang-Undang.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privasi</a>
+        <a href="#">Syarat & Ketentuan</a>
+        <a href="#">Mitra Waralaba</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-out Cart Drawer -->
+  <div class="cart-backdrop" id="cartBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-labelledby="cartDrawerTitle">
+    <div class="cart-drawer-header">
+      <div class="cart-header-title">
+        <h3 id="cartDrawerTitle">Pesanan Anda</h3>
+        <span class="cart-badge-count" id="drawerItemCount">0 Item</span>
+      </div>
+      <button type="button" class="drawer-close-btn" id="closeCartBtn" aria-label="Tutup Keranjang">&times;</button>
+    </div>
+
+    <!-- Empty State -->
+    <div class="cart-empty-state" id="cartEmptyState">
+      <div class="empty-icon">🧋</div>
+      <h4>Keranjang Anda Masih Kosong</h4>
+      <p>Pilih minuman matcha atau boba favorit Anda dari menu untuk memulai pesanan.</p>
+      <button type="button" class="btn btn-primary" id="startShoppingBtn">Pilih Minuman Sekarang</button>
+    </div>
+
+    <!-- Filled State Items List -->
+    <div class="cart-items-list" id="cartItemsList">
+      <!-- Injected by JavaScript -->
+    </div>
+
+    <!-- Drawer Footer / Summary -->
+    <div class="cart-drawer-footer" id="cartDrawerFooter">
+      <div class="cart-summary-line">
+        <span>Subtotal</span>
+        <strong id="cartSubtotal">Rp 0</strong>
+      </div>
+      <div class="cart-summary-line discount-line" id="discountLine" style="display: none;">
+        <span>Diskon (MIDORI20)</span>
+        <strong id="cartDiscount">-Rp 0</strong>
+      </div>
+      <div class="cart-summary-line total-line">
+        <span>Total Pembayaran</span>
+        <strong id="cartTotal">Rp 0</strong>
+      </div>
+
+      <div class="coupon-input-group">
+        <input type="text" id="couponCodeInput" placeholder="Kode promo (coba: MIDORI20)" value="MIDORI20">
+        <button type="button" id="applyCouponBtn" class="btn btn-sm">Terapkan</button>
+      </div>
+
+      <button type="button" class="btn btn-primary btn-block btn-checkout" id="checkoutBtn">
+        <span>Lanjutkan Checkout (WhatsApp Order)</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+      </button>
+      <p class="checkout-hint">Pesanan dikirim langsung ke WhatsApp barista kami untuk konfirmasi instan.</p>
+    </div>
+  </aside>
+
+  <!-- Customization Drink Modal -->
+  <div class="modal-backdrop" id="customModalBackdrop"></div>
+  <div class="custom-modal" id="customModal" role="dialog" aria-labelledby="modalDrinkTitle">
+    <button type="button" class="modal-close-btn" id="closeModalBtn" aria-label="Tutup Modal">&times;</button>
+    <div class="modal-grid">
+      <div class="modal-img-col">
+        <img src="assets/images/matcha-latte.jpg" alt="Preview Minuman" id="modalDrinkImg" class="modal-product-img">
+        <div class="modal-badge-wrapper" id="modalBadgeWrap">
+          <span class="modal-pill-badge" id="modalPillBadge">#1 TOP PICK</span>
+        </div>
+      </div>
+      <div class="modal-info-col">
+        <h3 id="modalDrinkTitle" class="modal-drink-name">Matcha Latte with Boba</h3>
+        <p id="modalDrinkDesc" class="modal-drink-desc">Ceremonial grade Uji matcha whisked with fresh creamy milk and slow-cooked warm tapioca pearls.</p>
+        <div class="modal-price" id="modalDrinkPrice">Rp 48.000</div>
+
+        <!-- Customization Options -->
+        <div class="custom-option-group">
+          <label class="option-label">Tingkat Manis (Sweetness)</label>
+          <div class="pill-selectors" id="sugarSelectors">
+            <button type="button" class="pill-opt" data-val="0%">0% (No Sugar)</button>
+            <button type="button" class="pill-opt" data-val="50%">50% (Less Sweet)</button>
+            <button type="button" class="pill-opt active" data-val="75%">75% (Barista Choice)</button>
+            <button type="button" class="pill-opt" data-val="100%">100% (Normal)</button>
+          </div>
+        </div>
+
+        <div class="custom-option-group">
+          <label class="option-label">Tingkat Es (Ice Level)</label>
+          <div class="pill-selectors" id="iceSelectors">
+            <button type="button" class="pill-opt" data-val="No Ice">No Ice</button>
+            <button type="button" class="pill-opt" data-val="Less Ice">Less Ice</button>
+            <button type="button" class="pill-opt active" data-val="Normal Ice">Normal Ice</button>
+          </div>
+        </div>
+
+        <div class="custom-option-group">
+          <label class="option-label">Pilihan Susu (Milk Base)</label>
+          <div class="pill-selectors" id="milkSelectors">
+            <button type="button" class="pill-opt active" data-val="Fresh Dairy Milk">Fresh Dairy</button>
+            <button type="button" class="pill-opt" data-val="Oat Milk (+Rp 6.000)">Oat Milk (+Rp 6k)</button>
+            <button type="button" class="pill-opt" data-val="Almond Milk (+Rp 7.000)">Almond Milk (+Rp 7k)</button>
+          </div>
+        </div>
+
+        <div class="custom-option-group">
+          <label class="option-label">Ekstra Topping</label>
+          <div class="checkbox-options" id="toppingSelectors">
+            <label class="topping-check-item">
+              <input type="checkbox" value="Brown Sugar Boba" checked>
+              <span>Golden Boba (+Rp 5.000)</span>
+            </label>
+            <label class="topping-check-item">
+              <input type="checkbox" value="Cheese Sea Salt Foam">
+              <span>Sea Salt Cheese Foam (+Rp 7.000)</span>
+            </label>
+            <label class="topping-check-item">
+              <input type="checkbox" value="Matcha Jelly">
+              <span>Matcha Grass Jelly (+Rp 5.000)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Add to Order Button with Quantity -->
+        <div class="modal-action-row">
+          <div class="qty-control">
+            <button type="button" class="qty-btn" id="modalMinusQtyBtn">−</button>
+            <span class="qty-number" id="modalQtyNum">1</span>
+            <button type="button" class="qty-btn" id="modalPlusQtyBtn">+</button>
+          </div>
+          <button type="button" class="btn btn-primary btn-modal-add" id="modalAddCartBtn">
+            <span>Tambahkan ke Pesanan</span>
+            <span id="modalAddPriceText">Rp 48.000</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Store Locations Modal -->
+  <div class="modal-backdrop" id="locationsModalBackdrop"></div>
+  <div class="locations-modal" id="locationsModal">
+    <div class="locations-modal-header">
+      <h3>📍 Gerai MIDORI Atelier Terdekat</h3>
+      <button type="button" class="drawer-close-btn" id="closeLocationsModalBtn">&times;</button>
+    </div>
+    <div class="locations-list">
+      <div class="location-card">
+        <div class="loc-badge">Flagship Store</div>
+        <h4>MIDORI Senopati, Jakarta Selatan</h4>
+        <p>Jl. Suryo No. 24, Senopati, Kebayoran Baru, Jakarta Selatan</p>
+        <div class="loc-meta">
+          <span>🕒 Buka: 08:00 - 22:00 WIB</span>
+          <a href="https://maps.google.com" target="_blank" rel="noopener" class="map-link">Buka di Maps ↗</a>
+        </div>
+      </div>
+      <div class="location-card">
+        <div class="loc-badge">Garden Cafe</div>
+        <h4>MIDORI Dago Atas, Bandung</h4>
+        <p>Jl. Ir. H. Juanda No. 189, Dago, Coblong, Kota Bandung</p>
+        <div class="loc-meta">
+          <span>🕒 Buka: 08:00 - 22:00 WIB</span>
+          <a href="https://maps.google.com" target="_blank" rel="noopener" class="map-link">Buka di Maps ↗</a>
+        </div>
+      </div>
+      <div class="location-card">
+        <div class="loc-badge">Coastal Sanctuary</div>
+        <h4>MIDORI Echo Beach, Canggu Bali</h4>
+        <p>Jl. Pantai Batu Mejan No. 88, Canggu, Kuta Utara, Badung, Bali</p>
+        <div class="loc-meta">
+          <span>🕒 Buka: 07:30 - 23:00 WITA</span>
+          <a href="https://maps.google.com" target="_blank" rel="noopener" class="map-link">Buka di Maps ↗</a>
+        </div>
+      </div>
+      <div class="location-card">
+        <div class="loc-badge">Urban Space</div>
+        <h4>MIDORI Graha Famili, Surabaya</h4>
+        <p>Jl. Mayjen Yono Suwoyo, Pradahkalikendal, Dukuhpakis, Surabaya</p>
+        <div class="loc-meta">
+          <span>🕒 Buka: 08:00 - 22:00 WIB</span>
+          <a href="https://maps.google.com" target="_blank" rel="noopener" class="map-link">Buka di Maps ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification System -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
