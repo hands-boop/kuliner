@@ -1,102 +1,102 @@
 /**
- * MIDORI — Artisan Matcha & Boba Atelier
- * Frontend Interactive System: Products, Cart, Currency, Customization & WhatsApp Order
+ * MIDORI — Atelier Teh Matcha, Boba & Kopi Artisan
+ * Sistem Interaktif Frontend: Produk, Keranjang, Kustomisasi Minuman, Mata Uang & Pesanan WhatsApp
  */
 
-// 1. Menu Items Data
+// 1. Data Menu Minuman
 const MENU_ITEMS = [
   {
     id: 'm1',
-    name: 'Matcha Latte with Boba',
+    name: 'Matcha Latte Boba',
     category: 'matcha',
-    badge: '#1 TOP PICK',
+    badge: 'TERLARIS',
     priceIdr: 48000,
     priceUsd: 5.75,
     image: 'assets/images/matcha-latte.jpg',
-    desc: 'Ceremonial grade Uji matcha dipadukan dengan susu segar lembut dan boba mutiara hangat dimasak dengan gula aren murni.',
-    sugar: '75%',
-    ice: 'Normal Ice',
-    milk: 'Fresh Dairy'
+    desc: 'Matcha Uji seremonial berpadu dengan susu segar lembut dan boba mutiara hangat yang dimasak bersama gula aren murni.',
+    sugar: '75% (Rekomendasi Barista)',
+    ice: 'Es Normal',
+    milk: 'Susu Sapi Segar'
   },
   {
     id: 'm2',
-    name: 'Brown Sugar Tiger Milk Tea',
+    name: 'Brown Sugar Tiger Boba Milk',
     category: 'boba',
-    badge: 'FAVORITE',
+    badge: 'FAVORIT',
     priceIdr: 45000,
     priceUsd: 5.50,
     image: 'assets/images/brown-sugar.jpg',
-    desc: 'Slow-cooked chewy tapioca pearls diselimuti karamel gula aren pekat bermotif tiger stripe dengan susu creamy dingin.',
-    sugar: '75%',
-    ice: 'Normal Ice',
-    milk: 'Fresh Dairy'
+    desc: 'Boba mutiara kenyal berselimut karamel gula aren pekat bermotif tiger stripe dengan susu segar dingin yang gurih.',
+    sugar: '75% (Rekomendasi Barista)',
+    ice: 'Es Normal',
+    milk: 'Susu Sapi Segar'
   },
   {
     id: 'm3',
     name: 'Strawberry Matcha Latte',
     category: 'matcha',
-    badge: 'NEW',
+    badge: 'BARU',
     priceIdr: 52000,
     priceUsd: 5.95,
     image: 'assets/images/strawberry-matcha.jpg',
-    desc: 'Tiga lapisan cantik: puree stroberi asli di dasar, susu segar gurih, dan lapisan pekat ceremonial Uji matcha dengan boba kenyal.',
-    sugar: '75%',
-    ice: 'Normal Ice',
-    milk: 'Fresh Dairy'
+    desc: 'Tiga lapisan istimewa: selai stroberi asli di dasar, susu segar gurih, dan lapisan pekat matcha Uji seremonial dengan boba kenyal.',
+    sugar: '75% (Rekomendasi Barista)',
+    ice: 'Es Normal',
+    milk: 'Susu Sapi Segar'
   },
   {
     id: 'm4',
-    name: 'Iced Coffee with Boba',
+    name: 'Es Kopi Boba Karamel',
     category: 'coffee',
-    badge: 'BARISTA SPEC',
+    badge: 'PILIHAN BARISTA',
     priceIdr: 42000,
     priceUsd: 5.25,
     image: 'assets/images/iced-coffee.jpg',
-    desc: 'Double shot espresso blend Nusantara dengan boba gula aren hangat dan sea salt caramel cream foam di puncaknya.',
-    sugar: '75%',
-    ice: 'Normal Ice',
-    milk: 'Fresh Dairy'
+    desc: 'Double shot espresso blend Nusantara dengan boba gula aren hangat dan limpahan krim karamel sea salt di atasnya.',
+    sugar: '75% (Rekomendasi Barista)',
+    ice: 'Es Normal',
+    milk: 'Susu Sapi Segar'
   },
   {
     id: 'm5',
-    name: 'Mango Passion Jasmine Tea',
+    name: 'Teh Melati Mangga Markisa',
     category: 'fruit',
-    badge: 'REFRESHING',
+    badge: 'SEGAR',
     priceIdr: 39000,
     priceUsd: 4.85,
     image: 'assets/images/mango-passion.jpg',
-    desc: 'Seduhan teh hijau melati pegunungan dengan bulir mangga ranum, markisa segar, dan crystal jelly boba yang renyah.',
-    sugar: '75%',
-    ice: 'Normal Ice',
-    milk: 'None'
+    desc: 'Seduhan teh hijau melati pegunungan dengan bulir mangga harum, markisa segar, dan jeli boba kristal yang renyah.',
+    sugar: '75% (Rekomendasi Barista)',
+    ice: 'Es Normal',
+    milk: 'Tanpa Susu'
   },
   {
     id: 'm6',
-    name: 'Uji Matcha Pure Tea',
+    name: 'Teh Uji Matcha Murni',
     category: 'matcha',
-    badge: 'CEREMONIAL',
+    badge: 'SEREMONIAL',
     priceIdr: 40000,
     priceUsd: 4.90,
     image: 'assets/images/hero-drinks.jpg',
-    desc: 'Matcha murni khas tradisi chanoyu Jepang tanpa pemanis, dikocok chasen hingga menghasilkan buih sutra mikro yang lembut.',
-    sugar: '0%',
-    ice: 'No Ice',
-    milk: 'None'
+    desc: 'Matcha murni tradisi upacara teh Jepang tanpa pemanis, dikocok chasen hingga menghasilkan buih sutra mikro yang lembut.',
+    sugar: '0% (Tanpa Gula)',
+    ice: 'Tanpa Es',
+    milk: 'Tanpa Susu'
   }
 ];
 
-// App State
+// Status Aplikasi
 const state = {
-  currency: 'IDR', // 'IDR' or 'USD'
+  currency: 'IDR', // 'IDR' atau 'USD'
   rateIdrToUsd: 0.000062,
   cart: [],
-  discountPercent: 0, // from coupon
+  discountPercent: 0,
   couponApplied: '',
   selectedProductForModal: null,
   activeFilter: 'all'
 };
 
-// DOM References
+// Referensi Elemen DOM
 const productsGrid = document.getElementById('productsGrid');
 const cartDrawer = document.getElementById('cartDrawer');
 const cartBackdrop = document.getElementById('cartBackdrop');
@@ -117,18 +117,18 @@ const couponCodeInput = document.getElementById('couponCodeInput');
 const applyCouponBtn = document.getElementById('applyCouponBtn');
 const toastContainer = document.getElementById('toastContainer');
 
-// Currency Toggles
+// Pengubah Mata Uang
 const currIdrBtn = document.getElementById('currIdrBtn');
 const currUsdBtn = document.getElementById('currUsdBtn');
 
-// Mobile Nav
+// Navigasi Mobile
 const mobileMenuToggle = document.getElementById('mobileMenuToggle');
 const mobileDrawer = document.getElementById('mobileDrawer');
 const mobileBackdrop = document.getElementById('mobileBackdrop');
 const closeDrawerBtn = document.getElementById('closeDrawerBtn');
 const mobileCartOpenBtn = document.getElementById('mobileCartOpenBtn');
 
-// Customization Modal
+// Modal Kustomisasi
 const customModal = document.getElementById('customModal');
 const customModalBackdrop = document.getElementById('customModalBackdrop');
 const closeModalBtn = document.getElementById('closeModalBtn');
@@ -143,15 +143,16 @@ const modalPlusQtyBtn = document.getElementById('modalPlusQtyBtn');
 const modalAddCartBtn = document.getElementById('modalAddCartBtn');
 const modalAddPriceText = document.getElementById('modalAddPriceText');
 
-// Locations Modal
+// Modal Lokasi Gerai
 const locationsModal = document.getElementById('locationsModal');
 const locationsModalBackdrop = document.getElementById('locationsModalBackdrop');
 const closeLocationsModalBtn = document.getElementById('closeLocationsModalBtn');
 const locationsValItem = document.getElementById('locationsValItem');
 const findStoreBtn = document.getElementById('findStoreBtn');
 const viewAllLocationsFooter = document.getElementById('viewAllLocationsFooter');
+const viewAllMenuBtn = document.getElementById('viewAllMenuBtn');
 
-// Helper: Format Price
+// Fungsi Pembantu: Format Mata Uang
 function formatCurrency(amountIdr, amountUsd) {
   if (state.currency === 'USD') {
     const val = amountUsd !== undefined ? amountUsd : (amountIdr * state.rateIdrToUsd);
@@ -160,7 +161,7 @@ function formatCurrency(amountIdr, amountUsd) {
   return `Rp ${Number(amountIdr).toLocaleString('id-ID')}`;
 }
 
-// 2. Render Products
+// 2. Tampilkan Daftar Produk
 function renderProducts() {
   const filtered = state.activeFilter === 'all'
     ? MENU_ITEMS
@@ -168,7 +169,7 @@ function renderProducts() {
 
   productsGrid.innerHTML = filtered.map(item => {
     const priceStr = formatCurrency(item.priceIdr, item.priceUsd);
-    const badgeClass = item.badge === 'NEW' ? 'new' : '';
+    const badgeClass = item.badge === 'BARU' ? 'new' : '';
     
     return `
       <article class="product-card" data-id="${item.id}">
@@ -191,7 +192,7 @@ function renderProducts() {
   }).join('');
 }
 
-// 3. Category Filter
+// 3. Filter Kategori
 const filterTabs = document.querySelectorAll('.filter-tab');
 filterTabs.forEach(tab => {
   tab.addEventListener('click', () => {
@@ -202,7 +203,19 @@ filterTabs.forEach(tab => {
   });
 });
 
-// Footer category filter link support
+if (viewAllMenuBtn) {
+  viewAllMenuBtn.addEventListener('click', () => {
+    filterTabs.forEach(t => t.classList.remove('active'));
+    const allTab = document.querySelector('.filter-tab[data-category="all"]');
+    if (allTab) allTab.classList.add('active');
+    state.activeFilter = 'all';
+    renderProducts();
+    const menuEl = document.getElementById('menu');
+    if (menuEl) menuEl.scrollIntoView({ behavior: 'smooth' });
+  });
+}
+
+// Dukungan tautan kategori pada footer
 document.querySelectorAll('.filter-link').forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
@@ -213,11 +226,12 @@ document.querySelectorAll('.filter-link').forEach(link => {
       else t.classList.remove('active');
     });
     renderProducts();
-    document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+    const menuEl = document.getElementById('menu');
+    if (menuEl) menuEl.scrollIntoView({ behavior: 'smooth' });
   });
 });
 
-// 4. Currency Switcher
+// 4. Pengubah Mata Uang
 function setCurrency(curr) {
   state.currency = curr;
   if (curr === 'IDR') {
@@ -238,18 +252,23 @@ function setCurrency(curr) {
 currIdrBtn.addEventListener('click', () => setCurrency('IDR'));
 currUsdBtn.addEventListener('click', () => setCurrency('USD'));
 
-// 5. Toast Notifications
+// 5. Notifikasi Toast (Desain Minimalis Elegan)
 function showToast(message) {
   const toast = document.createElement('div');
   toast.className = 'toast';
-  toast.innerHTML = `<span>🍵</span> <span>${message}</span>`;
+  toast.innerHTML = `
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+    <span>${message}</span>
+  `;
   toastContainer.appendChild(toast);
   setTimeout(() => {
     toast.remove();
   }, 3000);
 }
 
-// 6. Cart Drawer Operations
+// 6. Operasi Keranjang Pesanan
 function openCart() {
   cartDrawer.classList.add('open');
   cartBackdrop.classList.add('open');
@@ -284,22 +303,22 @@ function quickAddToCart(productId) {
     priceIdr: product.priceIdr,
     priceUsd: product.priceUsd,
     sugar: '75%',
-    ice: 'Normal Ice',
-    milk: 'Fresh Dairy',
-    toppings: ['Golden Boba'],
+    ice: 'Es Normal',
+    milk: 'Susu Sapi Segar',
+    toppings: ['Boba Gula Aren'],
     qty: 1
   };
 
   state.cart.push(cartItem);
   updateCartDrawer();
-  showToast(`Ditambahkan: ${product.name}`);
+  showToast(`Berhasil menambahkan: ${product.name}`);
 }
 
 function updateCartDrawer() {
   const totalCount = state.cart.reduce((sum, item) => sum + item.qty, 0);
   cartCountBadge.textContent = totalCount;
   if (mobileCartBadge) mobileCartBadge.textContent = totalCount;
-  drawerItemCount.textContent = `${totalCount} Item`;
+  drawerItemCount.textContent = `${totalCount} Pilihan`;
 
   if (state.cart.length === 0) {
     cartEmptyState.style.display = 'flex';
@@ -312,12 +331,11 @@ function updateCartDrawer() {
   cartItemsList.style.display = 'flex';
   cartDrawerFooter.style.display = 'block';
 
-  // Render items
+  // Render daftar item keranjang
   cartItemsList.innerHTML = state.cart.map(item => {
-    const unitPrice = state.currency === 'USD' ? item.priceUsd : item.priceIdr;
     const itemTotalFormatted = formatCurrency(item.priceIdr * item.qty, item.priceUsd * item.qty);
     const toppingsStr = item.toppings && item.toppings.length ? ` • ${item.toppings.join(', ')}` : '';
-    const specsStr = `${item.sugar} gula • ${item.ice} • ${item.milk}${toppingsStr}`;
+    const specsStr = `${item.sugar} • ${item.ice} • ${item.milk}${toppingsStr}`;
 
     return `
       <div class="cart-item">
@@ -337,7 +355,7 @@ function updateCartDrawer() {
     `;
   }).join('');
 
-  // Calculate totals
+  // Perhitungan total
   const subtotalIdr = state.cart.reduce((sum, item) => sum + (item.priceIdr * item.qty), 0);
   const subtotalUsd = state.cart.reduce((sum, item) => sum + (item.priceUsd * item.qty), 0);
 
@@ -373,32 +391,32 @@ function changeQty(cartId, delta) {
 function removeCartItem(cartId) {
   state.cart = state.cart.filter(i => i.cartId !== cartId);
   updateCartDrawer();
-  showToast('Item dihapus dari pesanan');
+  showToast('Item berhasil dihapus dari keranjang');
 }
 
-// 7. Coupon Discount
+// 7. Kupon Diskon Promo
 applyCouponBtn.addEventListener('click', () => {
   const code = couponCodeInput.value.trim().toUpperCase();
   if (code === 'MIDORI20') {
     state.discountPercent = 20;
     state.couponApplied = 'MIDORI20';
-    showToast('Promo MIDORI20 aktif! Diskon 20% diterapkan.');
+    showToast('Promo MIDORI20 aktif! Diskon 20% berhasil diterapkan.');
   } else {
     state.discountPercent = 0;
     state.couponApplied = '';
-    showToast('Kode promo tidak valid atau sudah kedaluwarsa.');
+    showToast('Kode promo tidak valid atau sudah berakhir.');
   }
   updateCartDrawer();
 });
 
-// 8. Customization Modal Logic
+// 8. Logika Modal Kustomisasi
 let modalState = {
   product: null,
   qty: 1,
-  sugar: '75%',
-  ice: 'Normal Ice',
-  milk: 'Fresh Dairy',
-  toppings: ['Brown Sugar Boba'],
+  sugar: '75% (Rekomendasi Barista)',
+  ice: 'Es Normal',
+  milk: 'Susu Sapi Segar',
+  toppings: ['Boba Gula Aren'],
   extraCostIdr: 5000,
   extraCostUsd: 0.50
 };
@@ -407,12 +425,13 @@ function openCustomizeModal(productId) {
   const product = MENU_ITEMS.find(p => p.id === productId);
   if (!product) return;
 
+  state.selectedProductForModal = product;
   modalState.product = product;
   modalState.qty = 1;
-  modalState.sugar = '75%';
-  modalState.ice = 'Normal Ice';
-  modalState.milk = 'Fresh Dairy';
-  modalState.toppings = ['Brown Sugar Boba'];
+  modalState.sugar = '75% (Rekomendasi Barista)';
+  modalState.ice = 'Es Normal';
+  modalState.milk = 'Susu Sapi Segar';
+  modalState.toppings = ['Boba Gula Aren'];
 
   modalDrinkImg.src = product.image;
   modalDrinkTitle.textContent = product.name;
@@ -420,7 +439,7 @@ function openCustomizeModal(productId) {
   modalPillBadge.textContent = product.badge;
   modalQtyNum.textContent = '1';
 
-  // Reset UI selectors
+  // Reset pilihan pil
   setupPillGroup('#sugarSelectors', val => { modalState.sugar = val; });
   setupPillGroup('#iceSelectors', val => { modalState.ice = val; });
   setupPillGroup('#milkSelectors', val => {
@@ -428,9 +447,9 @@ function openCustomizeModal(productId) {
     updateModalPriceCalc();
   });
 
-  // Reset checkboxes
+  // Reset checkbox topping
   document.querySelectorAll('#toppingSelectors input').forEach(cb => {
-    cb.checked = cb.value === 'Brown Sugar Boba';
+    cb.checked = cb.value === 'Boba Gula Aren';
     cb.onchange = () => updateModalPriceCalc();
   });
 
@@ -446,9 +465,8 @@ function setupPillGroup(selector, onSelect) {
   const pills = container.querySelectorAll('.pill-opt');
   pills.forEach(pill => {
     pill.classList.remove('active');
-    if (pill.getAttribute('data-val') === '75%' ||
-        pill.getAttribute('data-val') === 'Normal Ice' ||
-        pill.getAttribute('data-val') === 'Fresh Dairy') {
+    const val = pill.getAttribute('data-val');
+    if (val.includes('75%') || val.includes('Es Normal') || val.includes('Susu Sapi Segar')) {
       pill.classList.add('active');
     }
 
@@ -466,26 +484,26 @@ function updateModalPriceCalc() {
   let extraIdr = 0;
   let extraUsd = 0;
 
-  // Milk surcharge
-  if (modalState.milk.includes('Oat Milk')) {
+  // Tambahan susu nabati
+  if (modalState.milk.includes('Oat')) {
     extraIdr += 6000;
     extraUsd += 0.60;
-  } else if (modalState.milk.includes('Almond Milk')) {
+  } else if (modalState.milk.includes('Almond')) {
     extraIdr += 7000;
     extraUsd += 0.70;
   }
 
-  // Topping surcharges
+  // Tambahan topping
   const selectedToppings = [];
   document.querySelectorAll('#toppingSelectors input:checked').forEach(cb => {
     selectedToppings.push(cb.value);
-    if (cb.value === 'Brown Sugar Boba') {
+    if (cb.value === 'Boba Gula Aren') {
       extraIdr += 5000;
       extraUsd += 0.50;
-    } else if (cb.value === 'Cheese Sea Salt Foam') {
+    } else if (cb.value === 'Krim Keju Sea Salt') {
       extraIdr += 7000;
       extraUsd += 0.70;
-    } else if (cb.value === 'Matcha Jelly') {
+    } else if (cb.value === 'Jeli Teh Matcha') {
       extraIdr += 5000;
       extraUsd += 0.50;
     }
@@ -508,6 +526,7 @@ function closeCustomModal() {
   customModal.classList.remove('open');
   customModalBackdrop.classList.remove('open');
   document.body.style.overflow = '';
+  state.selectedProductForModal = null;
 }
 
 closeModalBtn.addEventListener('click', closeCustomModal);
@@ -550,22 +569,22 @@ modalAddCartBtn.addEventListener('click', () => {
   updateCartDrawer();
   closeCustomModal();
   openCart();
-  showToast(`${modalState.qty}x ${modalState.product.name} ditambahkan`);
+  showToast(`${modalState.qty}x ${modalState.product.name} berhasil ditambahkan`);
 });
 
-// 9. WhatsApp Checkout Generation
+// 9. Pembuatan Format Pesanan WhatsApp (Bahasa Indonesia & Rapi Tanpa Emoji Berlebih)
 checkoutBtn.addEventListener('click', () => {
   if (state.cart.length === 0) return;
 
-  let message = `Halo Barista MIDORI Atelier! 🍵%0A%0ASaya ingin memesan minuman:%0A`;
+  let message = `Halo Barista MIDORI Atelier,%0A%0ASaya ingin memesan minuman:%0A`;
   
   state.cart.forEach((item, idx) => {
     const formattedPrice = state.currency === 'USD'
       ? `$${(item.priceUsd * item.qty).toFixed(2)}`
       : `Rp ${(item.priceIdr * item.qty).toLocaleString('id-ID')}`;
     
-    const toppingsStr = item.toppings.length ? `Topping: ${item.toppings.join(', ')}` : 'No Toppings';
-    message += `%0A${idx + 1}. *${item.name}* (${item.qty}x)%0A   - Gula: ${item.sugar}, Es: ${item.ice}%0A   - Susu: ${item.milk}%0A   - ${toppingsStr}%0A   - Subtotal: ${formattedPrice}%0A`;
+    const toppingsStr = item.toppings && item.toppings.length ? item.toppings.join(', ') : 'Tanpa Topping';
+    message += `%0A${idx + 1}. *${item.name}* (${item.qty}x)%0A   - Manis: ${item.sugar}%0A   - Es: ${item.ice}%0A   - Susu: ${item.milk}%0A   - Topping: ${toppingsStr}%0A   - Subtotal: ${formattedPrice}%0A`;
   });
 
   const subtotalIdr = state.cart.reduce((s, i) => s + (i.priceIdr * i.qty), 0);
@@ -575,14 +594,14 @@ checkoutBtn.addEventListener('click', () => {
   if (state.discountPercent > 0) {
     message += `%0A*Diskon Promo (${state.couponApplied}):* Rp ${discountIdr.toLocaleString('id-ID')}`;
   }
-  message += `%0A*TOTAL ESTIMASI:* Rp ${finalIdr.toLocaleString('id-ID')}%0A%0AMohon info ketersediaan dan metode pengantaran. Terima kasih! 🌿`;
+  message += `%0A*TOTAL ESTIMASI:* Rp ${finalIdr.toLocaleString('id-ID')}%0A%0AMohon informasi ketersediaan pesanan dan nomor antrean. Terima kasih banyak.`;
 
-  // Pre-configured WhatsApp number
+  // Nomor WhatsApp tujuan
   const waUrl = `https://wa.me/6281234567890?text=${message}`;
   window.open(waUrl, '_blank');
 });
 
-// 10. Locations Modal
+// 10. Modal Lokasi Gerai
 function openLocationsModal() {
   locationsModal.classList.add('open');
   locationsModalBackdrop.classList.add('open');
@@ -601,15 +620,15 @@ function closeLocationsModal() {
 closeLocationsModalBtn.addEventListener('click', closeLocationsModal);
 locationsModalBackdrop.addEventListener('click', closeLocationsModal);
 
-// Rewards club click
+// Klik program loyalitas
 const rewardsValItem = document.getElementById('rewardsValItem');
 if (rewardsValItem) {
   rewardsValItem.addEventListener('click', () => {
-    showToast('🎁 Program Hadiah: Dapatkan 1 Stamp tiap pembelian boba!');
+    showToast('Program Hadiah: Dapatkan 1 Cap Poin setiap pembelian minuman.');
   });
 }
 
-// 11. Mobile Drawer Navigation
+// 11. Navigasi Laci Mobile
 function openMobileDrawer() {
   mobileDrawer.classList.add('open');
   mobileBackdrop.classList.add('open');
@@ -632,29 +651,32 @@ document.querySelectorAll('.mobile-nav-link').forEach(link => {
   });
 });
 
-// 12. Newsletter Form
+// 12. Formulir Newsletter
 const newsletterForm = document.getElementById('newsletterForm');
 const newsletterInput = document.getElementById('newsletterInput');
 
-newsletterForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const email = newsletterInput.value.trim();
-  if (email) {
-    showToast(`Terima kasih! Voucher diskon 25% telah dikirim ke ${email}`);
-    newsletterInput.value = '';
-  }
-});
+if (newsletterForm) {
+  newsletterForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = newsletterInput.value.trim();
+    if (email) {
+      showToast(`Terima kasih! Voucher diskon 25% telah dikirimkan ke ${email}`);
+      newsletterInput.value = '';
+    }
+  });
+}
 
-// Start Shopping button in empty cart
+// Tombol Belanja saat Keranjang Kosong
 const startShoppingBtn = document.getElementById('startShoppingBtn');
 if (startShoppingBtn) {
   startShoppingBtn.addEventListener('click', () => {
     closeCart();
-    document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+    const menuEl = document.getElementById('menu');
+    if (menuEl) menuEl.scrollIntoView({ behavior: 'smooth' });
   });
 }
 
-// Initialize Page
+// Inisialisasi Halaman
 document.addEventListener('DOMContentLoaded', () => {
   renderProducts();
   updateCartDrawer();
